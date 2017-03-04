@@ -1,3 +1,16 @@
+sudo: required
+
 language: node_js
+
 node_js:
   - "node"
+
+services:
+  - docker
+
+before_install:
+- docker build -t ptz-user-repository . 
+- docker run -d ptz-user-repository
+
+script:
+- docker exec YOUR_CONTAINER_NAME npm test
