@@ -29,7 +29,7 @@
 
 ## Test
 ```
-    sudo docker build -t ptz-user-repository . 
-    sudo docker run -d ptz-user-repository
-    sudo docker exec YOUR_CONTAINER_NAME npm test
+    sudo docker build -t pur . 
+    sudo docker run -d --name cpur pur
+    sudo docker exec cpur npm test
 ```
