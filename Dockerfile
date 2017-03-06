@@ -1,4 +1,4 @@
-FROM angeloocana/alpine-nodejs-mongodb:0.2
+FROM angeloocana/alpine-nodejs-mongodb:0.3
 
 #create app directory
 RUN mkdir -p /usr/src/app
