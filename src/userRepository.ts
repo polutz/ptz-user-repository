@@ -8,8 +8,6 @@ function UserRepository(db): IUserRepository {
         var result = await getUserDbCollection()
             .replaceOne({ _id: user.id }, user, { upsert: true });
         user = result.ops[0];
-        if (result.upsertedId)
-            user.id = result.upsertedId._id;
         return Promise.resolve(user);
     }
 
@@ -36,12 +34,19 @@ function UserRepository(db): IUserRepository {
     function getOtherUsersWithSameUserNameOrEmail(user: IUser): Promise<IUser[]> {
         var query = {
             _id: { $ne: user.id },
-            $or: [{ email: user.email },
-            { userName: user.userName }]
+            $or: [
+                { email: user.email },
+                { userName: user.userName }
+            ]
+        };
+
+        var select = {
+            userName: 1,
+            email: 1 
         };
 
         return getUserDbCollection()
-            .find(query, { userName: 1, email: 1 })
+            .find(query, select)
             .toArray();
     }
 
