@@ -1,6 +1,7 @@
 # ptz-user-repository
 
 [![Build Status](https://travis-ci.org/polutz/ptz-user-repository.svg)](https://travis-ci.org/polutz/ptz-user-repository)
+[![NPM](https://img.shields.io/npm/v/ptz-user-repository.svg)](https://www.npmjs.com/package/ptz-user-repository)
 [![codecov.io](http://codecov.io/github/polutz/ptz-user-repository/coverage.svg)](http://codecov.io/github/polutz/ptz-user-repository)
 [![Dependency Status](https://gemnasium.com/polutz/ptz-user-repository.svg)](https://gemnasium.com/polutz/ptz-user-repository)
 [![bitHound Score](https://www.bithound.io/github/gotwarlost/istanbul/badges/score.svg)](https://www.bithound.io/github/polutz/ptz-user-repository)
@@ -36,13 +37,12 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 
 ## Prerequisites
 
-1. Latest version of Node to be installed.
+- Node.
+- Docker (for tests).
 
 ## NPM Global packages
 ```
-    npm install ts-node -g
-    npm install typescript-node -g
-    npm install babel-cli -g
+    npm install -g ts-node typescript-node babel-cli
 ```
 
 ## Typings Global Packages 
