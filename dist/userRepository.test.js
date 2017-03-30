@@ -1,14 +1,14 @@
 'use strict';
 
-var _userRepository = require('./userRepository');
-
-var _userRepository2 = _interopRequireDefault(_userRepository);
-
 var _mongodb = require('mongodb');
+
+var _ptzAssert = require('ptz-assert');
 
 var _ptzUserDomain = require('ptz-user-domain');
 
-var _ptzAssert = require('ptz-assert');
+var _userRepository = require('./userRepository');
+
+var _userRepository2 = _interopRequireDefault(_userRepository);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37,7 +37,7 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
     });
 };
 
-var MONGO_URL = 'mongodb://localhost:27017/relay';
+var MONGO_URL = 'mongodb://localhost:27017/test';
 var db, userRepository;
 describe('UserRepository', function () {
     beforeEach(function () {
@@ -52,7 +52,7 @@ describe('UserRepository', function () {
                         case 2:
                             db = _context.sent;
 
-                            userRepository = (0, _userRepository2.default)(db);
+                            userRepository = new _userRepository2.default(db);
 
                         case 4:
                         case 'end':
@@ -65,7 +65,7 @@ describe('UserRepository', function () {
     describe('save', function () {
         it('insert', function () {
             return __awaiter(undefined, void 0, void 0, regeneratorRuntime.mark(function _callee2() {
-                var user, usersDb, userDb;
+                var user, userDb;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
@@ -80,11 +80,10 @@ describe('UserRepository', function () {
 
                             case 3:
                                 _context2.next = 5;
-                                return userRepository.getByIds([user.id]);
+                                return userRepository.getById(user.id);
 
                             case 5:
-                                usersDb = _context2.sent;
-                                userDb = usersDb[0];
+                                userDb = _context2.sent;
 
                                 (0, _ptzAssert.ok)(userDb);
                                 (0, _ptzAssert.equal)(userDb.id, user.id);
@@ -92,7 +91,7 @@ describe('UserRepository', function () {
                                 (0, _ptzAssert.equal)(userDb.email, user.email);
                                 (0, _ptzAssert.equal)(userDb.userName, user.userName);
 
-                            case 12:
+                            case 11:
                             case 'end':
                                 return _context2.stop();
                         }

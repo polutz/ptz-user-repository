@@ -56,8 +56,8 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 ```
 
 ## Test
+We use docker to run the tests against a real MongoDB database
 ```
-    sudo docker build -t pur . 
-    sudo docker run -d --name cpur pur
-    sudo docker exec cpur npm test
+    sudo docker-compose up -d
+    sudo docker exec web-ptz-user-repository npm test
 ```

@@ -1,5 +1,5 @@
 import UserRepository from './userRepository';
 
-export{
+export {
     UserRepository
-}
+};

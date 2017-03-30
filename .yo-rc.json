@@ -1,0 +1,9 @@
+{
+  "generator-ptz": {
+    "promptValues": {
+      "appname": "ptz-user-repository",
+      "githubAuthor": "polutz",
+      "runNpmInstall": true
+    }
+  }
+}

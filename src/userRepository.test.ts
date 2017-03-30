@@ -1,28 +1,27 @@
-import UserRepository from './userRepository';
 import { MongoClient } from 'mongodb';
+import { equal, ok } from 'ptz-assert';
 import { User } from 'ptz-user-domain';
-import {ok, equal} from 'ptz-assert';
+import UserRepository from './userRepository';
 
-const MONGO_URL = 'mongodb://localhost:27017/relay';
+const MONGO_URL = 'mongodb://localhost:27017/test';
 var db, userRepository;
 
 describe('UserRepository', () => {
     beforeEach(async () => {
         db = await MongoClient.connect(MONGO_URL);
-        userRepository = UserRepository(db);
+        userRepository = new UserRepository(db);
     });
 
     describe('save', () => {
         it('insert', async () => {
-            var user = new User({
+            const user = new User({
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'angeloocana'
             });
 
             await userRepository.save(user);
-            var usersDb = await userRepository.getByIds([user.id]);
-            var userDb = usersDb[0];
+            const userDb = await userRepository.getById(user.id);
 
             ok(userDb);
             equal(userDb.id, user.id);

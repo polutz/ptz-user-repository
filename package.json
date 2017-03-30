@@ -4,8 +4,10 @@
   "description": "Polutz User Repository.",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
+    "js": "gulp js",
+    "pretest": "npm-run-all --parallel js lint",
     "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
-    "pretest": "gulp js",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=4739d213-8933-4684-890c-1ce8ace50a11"
   },
   "repository": {
@@ -19,25 +21,28 @@
   },
   "homepage": "https://github.com/polutz/ptz-user-repository#readme",
   "dependencies": {
-    "babel-loader": "^6.2.10",
     "mongodb": "^2.2.24",
     "ptz-assert": "^1.2.0",
+    "ptz-core-repository": "^1.0.0",
     "ptz-user-domain": "^1.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-polyfill": "^6.22.0",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-core": "^6.24.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
     "codecov": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-typescript": "^3.1.4",
+    "gulp-typescript": "^3.1.6",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "mocha-lcov-reporter": "^1.2.0",
-    "nyc": "^10.1.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^10.2.0",
+    "ptz-assert": "^1.6.2",
     "sinon": "^1.17.7",
-    "typescript": "^2.1.6",
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2",
     "typings": "^2.1.0"
   },
   "babel": {

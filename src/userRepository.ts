@@ -1,38 +1,15 @@
-function UserRepository(db): IUserRepository {
+import { IUser, IUserRepository } from 'ptz-core-domain';
+import { BaseRepository } from 'ptz-core-repository';
 
-    function getUserDbCollection() {
-        return db.collection('users');
+export default class UserRepository extends BaseRepository<IUser> implements IUserRepository {
+
+    constructor(db) {
+        const collectionName = 'users';
+        super(db, collectionName);
     }
 
-    async function save(user: IUser): Promise<IUser> {
-        var result = await getUserDbCollection()
-            .replaceOne({ _id: user.id }, user, { upsert: true });
-        user = result.ops[0];
-        return Promise.resolve(user);
-    }
-
-    function getByIds(ids: string[]): Promise<IUser[]> {
-        var query = {
-            _id: {
-                $in: ids
-            }
-        };
-
-        return getUserDbCollection()
-            .find(query)
-            .toArray();
-    }
-
-    function find(query: any, options: { limit: number }): Promise<IUser[]> {
-        var result = getUserDbCollection()
-            .find(query, {}, options)
-            .toArray();
-
-        return result;
-    }
-
-    function getOtherUsersWithSameUserNameOrEmail(user: IUser): Promise<IUser[]> {
-        var query = {
+    getOtherUsersWithSameUserNameOrEmail(user: IUser): Promise<IUser[]> {
+        const query = {
             _id: { $ne: user.id },
             $or: [
                 { email: user.email },
@@ -40,34 +17,23 @@ function UserRepository(db): IUserRepository {
             ]
         };
 
-        var select = {
+        const select = {
             userName: 1,
-            email: 1 
+            email: 1
         };
 
-        return getUserDbCollection()
+        return this.getDbCollection()
             .find(query, select)
             .toArray();
     }
 
-    function getByUserNameOrEmail(userNameOrEmail: string): Promise<IUser> {
-        var query = {
+    getByUserNameOrEmail(userNameOrEmail: string): Promise<IUser> {
+        const query = {
             $or: [{ email: userNameOrEmail },
             { userName: userNameOrEmail }]
         };
 
-        return getUserDbCollection()
+        return this.getDbCollection()
             .findOne(query);
     }
-
-
-    return {
-        save,
-        find,
-        getByUserNameOrEmail,
-        getByIds,
-        getOtherUsersWithSameUserNameOrEmail
-    }
 }
-
-export default UserRepository;
