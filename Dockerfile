@@ -6,7 +6,12 @@ WORKDIR /code
 
 #install app dependencies
 RUN npm install -g ts-node ts-node babel-cli && \
-    npm install --no-bin-links
+        npm install 
+
+# if you are using npm link use --no-bin-links to test, but do NOT commit it, travis falls on error
+# npm install --no-bin-links
+
+
 #    && \
 #    typings install dt~mocha --global
 
