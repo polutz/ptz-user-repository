@@ -3,12 +3,16 @@
   "version": "1.1.0",
   "description": "Polutz User Repository.",
   "main": "dist/index.js",
+  "typings": "src/index.ts",
   "scripts": {
+    "postinstall": "typings install",
     "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
-    "js": "gulp js",
+    "js": "tsc",
     "pretest": "npm-run-all --parallel js lint",
     "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
-    "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=4739d213-8933-4684-890c-1ce8ace50a11"
+    "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=4739d213-8933-4684-890c-1ce8ace50a11",
+    "predebug": "npm run pretest",
+    "debug": "babel-node --presets es2015 --nolazy --debug-brk=5858 dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,11 @@
     "url": "https://github.com/polutz/ptz-user-repository/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-repository#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "mongodb": "^2.2.24",
     "ptz-assert": "^1.2.0",
@@ -44,10 +53,5 @@
     "tslint": "^5.0.0",
     "typescript": "^2.2.2",
     "typings": "^2.1.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   }
 }

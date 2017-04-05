@@ -5,5 +5,12 @@
       "githubAuthor": "polutz",
       "runNpmInstall": true
     }
+  },
+  "generator-ptz-repository": {
+    "promptValues": {
+      "appname": "ptz-user-repository",
+      "githubAuthor": "polutz",
+      "runNpmInstall": false
+    }
   }
 }
