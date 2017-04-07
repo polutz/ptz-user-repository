@@ -24,14 +24,9 @@
     "url": "https://github.com/polutz/ptz-user-repository/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-repository#readme",
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "dependencies": {
+    "@types/node": "^7.0.12",
     "mongodb": "^2.2.24",
-    "ptz-assert": "^1.2.0",
     "ptz-core-repository": "^1.0.0",
     "ptz-user-domain": "^1.0.0"
   },

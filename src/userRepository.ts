@@ -1,5 +1,5 @@
-import { IUser, IUserRepository } from 'ptz-user-domain';
 import { BaseRepository } from 'ptz-core-repository';
+import { IUser, IUserRepository } from 'ptz-user-domain';
 
 export default class UserRepository extends BaseRepository<IUser> implements IUserRepository {
 

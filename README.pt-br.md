@@ -10,6 +10,7 @@
 [pt-br](https://github.com/polutz/ptz-user-repository/blob/master/README.pt-br.md)
 [en-us](https://github.com/polutz/ptz-user-repository/blob/master/README.md)
 
+
 Este é o repositório dos Usuários usando mongoDB no Polutz, conjunto de móludos baseados em DDD (Domain Driven Design) 
 e TDD (Test Driven Development).
 Sinta-se livre para usar em seus projetos, e contribuir!
@@ -59,12 +60,12 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 ```
 
 ## Test
-We use docker to run the tests against a real MongoDB database
-1) Run this command in order to create a docker container. Copy the output container name.
+Nos usamos o docker pra rodar os nossos testes em um banco MongoDB real.
+1) Execute o comando abaixo para criar um container docker e copiei o nome do container gerado.
 ```
     sudo docker-compose up -d
 ```
-2) Update CONTAINER_NAME with the container name and run the tests.
+2) Substitua CONTAINER_NAME pelo nome do container gerado no comando acima, agora só rodar o comando para executar os testes.
 ```
     sudo docker exec CONTAINER_NAME npm test
 ```
