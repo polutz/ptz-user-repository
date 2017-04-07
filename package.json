@@ -9,7 +9,7 @@
     "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "tsc",
     "pretest": "npm-run-all --parallel js lint",
-    "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
+    "mocha": "mocha ./dist/**/*.js --require babel-polyfill --compilers js:./ptz-babel-register.js",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=4739d213-8933-4684-890c-1ce8ace50a11",
     "predebug": "npm run pretest",
     "debug": "babel-node --presets es2015 --nolazy --debug-brk=5858 dist/index.js"
@@ -24,7 +24,13 @@
     "url": "https://github.com/polutz/ptz-user-repository/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-repository#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
+    "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
     "mongodb": "^2.2.24",
     "ptz-core-repository": "^1.0.0",
