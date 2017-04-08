@@ -1,5 +1,9 @@
 ## master
 
+## 1.1.2 (April 7, 2017)
+
+* Remove babel-node, babel-polyfill, babel-core and ptz-babel-register.
+
 ## 1.1.1 (April 7, 2017)
 
 * Remove typings. Now it is possible to use typings throw npm modules.
