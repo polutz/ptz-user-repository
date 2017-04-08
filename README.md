@@ -22,22 +22,6 @@ Regras de negocio devem ir para a camada de Domain ou App,
 o ídeal é deixar só na Domain, e na App só chamar o repositório 
 passando pra Domain o que for necessário.
 
-Core Domain: https://github.com/polutz/ptz-core-domain
-
-User Domain: https://github.com/polutz/ptz-user-domain
-
-User Repository: https://github.com/polutz/ptz-user-repository
-
-Projeto que utiliza os modulos acima: https://github.com/angeloocana/freecomclub
-
-Tarefas: https://trello.com/b/w9BqiPdz/frecom-club
-
-Stack: react, redux, relay, graphql, nodejs e mongodb.
-
-Metodologias: TDD (Test Driven Development), DDD (Domain Driven Design).
-
-Tools: Docker, Typescript, babel, webpack, mocha, gulp.
-
 ## Prerequisites
 
 - Node.
@@ -45,12 +29,7 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 
 ## NPM Global packages
 ```
-    npm install -g ts-node typescript-node babel-cli
-```
-
-## Typings Global Packages 
-```
-    typings install dt~mocha --global --save
+    npm install -g ts-node
 ```
 
 ## Setup

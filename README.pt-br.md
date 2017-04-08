@@ -23,22 +23,6 @@ Regras de negocio devem ir para a camada de Domain ou App,
 o ídeal é deixar só na Domain, e na App só chamar o repositório 
 passando pra Domain o que for necessário.
 
-Core Domain: https://github.com/polutz/ptz-core-domain
-
-User Domain: https://github.com/polutz/ptz-user-domain
-
-User Repository: https://github.com/polutz/ptz-user-repository
-
-Projeto que utiliza os modulos acima: https://github.com/angeloocana/freecomclub
-
-Tarefas: https://trello.com/b/w9BqiPdz/frecom-club
-
-Stack: react, redux, relay, graphql, nodejs e mongodb.
-
-Metodologias: TDD (Test Driven Development), DDD (Domain Driven Design).
-
-Tools: Docker, Typescript, babel, webpack, mocha, gulp.
-
 ## Prerequisites
 
 - Node.
@@ -46,12 +30,7 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 
 ## NPM Global packages
 ```
-    npm install -g ts-node typescript-node babel-cli
-```
-
-## Typings Global Packages 
-```
-    typings install dt~mocha --global --save
+    npm install -g ts-node
 ```
 
 ## Setup
@@ -60,12 +39,12 @@ Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 ```
 
 ## Test
-Nos usamos o docker pra rodar os nossos testes em um banco MongoDB real.
-1) Execute o comando abaixo para criar um container docker e copiei o nome do container gerado.
+We use docker to run the tests against a real MongoDB database
+1) Run this command in order to create a docker container. Copy the output container name.
 ```
     sudo docker-compose up -d
 ```
-2) Substitua CONTAINER_NAME pelo nome do container gerado no comando acima, agora só rodar o comando para executar os testes.
+2) Update CONTAINER_NAME with the container name and run the tests.
 ```
     sudo docker exec CONTAINER_NAME npm test
 ```

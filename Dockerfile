@@ -5,15 +5,12 @@ ADD . /code
 WORKDIR /code
 
 #install app dependencies
-RUN npm install -g ts-node typings babel-cli && \
+RUN npm install -g ts-node && \
         npm install
 
 # if you are using npm link use --no-bin-links to test, but do NOT commit it, travis falls on error
 # npm install --no-bin-links
 
-
-#    && \
-#    typings install dt~mocha --global
 
 EXPOSE 3000
 
