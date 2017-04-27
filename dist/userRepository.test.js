@@ -12,93 +12,66 @@ var _userRepository2 = _interopRequireDefault(_userRepository);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) {
-            try {
-                step(generator.next(value));
-            } catch (e) {
-                reject(e);
-            }
-        }
-        function rejected(value) {
-            try {
-                step(generator["throw"](value));
-            } catch (e) {
-                reject(e);
-            }
-        }
-        function step(result) {
-            result.done ? resolve(result.value) : new P(function (resolve) {
-                resolve(result.value);
-            }).then(fulfilled, rejected);
-        }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var MONGO_URL = 'mongodb://localhost:27017/test';
 var db, userRepository;
 describe('UserRepository', function () {
-    beforeEach(function () {
-        return __awaiter(undefined, void 0, void 0, regeneratorRuntime.mark(function _callee() {
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+    beforeEach(_asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return _mongodb.MongoClient.connect(MONGO_URL);
+
+                    case 2:
+                        db = _context.sent;
+
+                        userRepository = new _userRepository2.default(db);
+
+                    case 4:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, undefined);
+    })));
+    describe('save', function () {
+        it('insert', _asyncToGenerator(regeneratorRuntime.mark(function _callee2() {
+            var user, userDb;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
-                    switch (_context.prev = _context.next) {
+                    switch (_context2.prev = _context2.next) {
                         case 0:
-                            _context.next = 2;
-                            return _mongodb.MongoClient.connect(MONGO_URL);
+                            user = new _ptzUserDomain.User({
+                                displayName: 'Angelo',
+                                email: 'angeloocana@gmail.com',
+                                userName: 'angeloocana'
+                            });
+                            _context2.next = 3;
+                            return userRepository.save(user);
 
-                        case 2:
-                            db = _context.sent;
+                        case 3:
+                            _context2.next = 5;
+                            return userRepository.getById(user.id);
 
-                            userRepository = new _userRepository2.default(db);
+                        case 5:
+                            userDb = _context2.sent;
 
-                        case 4:
+                            (0, _ptzAssert.ok)(userDb);
+                            (0, _ptzAssert.equal)(userDb.id, user.id);
+                            (0, _ptzAssert.equal)(userDb.displayName, user.displayName);
+                            (0, _ptzAssert.equal)(userDb.email, user.email);
+                            (0, _ptzAssert.equal)(userDb.userName, user.userName);
+
+                        case 11:
                         case 'end':
-                            return _context.stop();
+                            return _context2.stop();
                     }
                 }
-            }, _callee, this);
-        }));
-    });
-    describe('save', function () {
-        it('insert', function () {
-            return __awaiter(undefined, void 0, void 0, regeneratorRuntime.mark(function _callee2() {
-                var user, userDb;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                user = new _ptzUserDomain.User({
-                                    displayName: 'Angelo',
-                                    email: 'angeloocana@gmail.com',
-                                    userName: 'angeloocana'
-                                });
-                                _context2.next = 3;
-                                return userRepository.save(user);
-
-                            case 3:
-                                _context2.next = 5;
-                                return userRepository.getById(user.id);
-
-                            case 5:
-                                userDb = _context2.sent;
-
-                                (0, _ptzAssert.ok)(userDb);
-                                (0, _ptzAssert.equal)(userDb.id, user.id);
-                                (0, _ptzAssert.equal)(userDb.displayName, user.displayName);
-                                (0, _ptzAssert.equal)(userDb.email, user.email);
-                                (0, _ptzAssert.equal)(userDb.userName, user.userName);
-
-                            case 11:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-        });
+            }, _callee2, undefined);
+        })));
         it('update');
     });
     describe('find', function () {
@@ -116,4 +89,5 @@ describe('UserRepository', function () {
         it('not found');
     });
 });
+//# sourceMappingURL=userRepository.test.js.map
 //# sourceMappingURL=userRepository.test.js.map

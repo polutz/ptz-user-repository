@@ -53,3 +53,4 @@ var UserRepository = function (_BaseRepository) {
 
 
 exports.default = UserRepository;
+//# sourceMappingURL=userRepository.js.map
