@@ -1,6 +1,6 @@
 {
   "name": "ptz-user-repository",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Polutz User Repository.",
   "main": "dist/index.js",
   "typings": "src/index.ts",

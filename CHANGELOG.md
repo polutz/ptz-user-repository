@@ -1,5 +1,9 @@
 ## master
 
+## 1.1.3 (April 26, 2017)
+
+* Transpiling Typescript to esnext.
+
 ## 1.1.2 (April 7, 2017)
 
 * Remove babel-node, babel-polyfill, babel-core and ptz-babel-register.
