@@ -1,3 +1,2 @@
-import UserRepository from './userRepository';
-export { UserRepository };
+export * from './userRepository';
 //# sourceMappingURL=index.js.map

@@ -3,14 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.UserRepository = undefined;
 
 var _userRepository = require('./userRepository');
 
-var _userRepository2 = _interopRequireDefault(_userRepository);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.UserRepository = _userRepository2.default;
-//# sourceMappingURL=index.js.map
+Object.keys(_userRepository).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _userRepository[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map

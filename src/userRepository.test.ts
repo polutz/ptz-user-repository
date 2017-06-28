@@ -1,50 +1,32 @@
-import { MongoClient } from 'mongodb';
+// import { Collection, Db } from 'mongodb';
+// import { createRepository } from '@alanmarcell/ptz-core-repository';
+// import { IBaseRepository, IEntityMinBase } from 'ptz-core-domain';
+import { IUserArgs } from '@alanmarcell/ptz-user-domain';
 import { emptyArray, equal, notEqual, notOk, ok } from 'ptz-assert';
-import { IUserRepository, User } from 'ptz-user-domain';
-import { UserRepository } from './index';
+import * as Core from './index';
 
-const MONGO_URL = 'mongodb://localhost:27017/test';
-var db, userRepository: IUserRepository;
-
+const MONGO_URL = 'mongodb://localhost:27017/ptz-core-repo';
+var userRepository;
 describe('UserRepository', () => {
+
     beforeEach(async () => {
-        db = await MongoClient.connect(MONGO_URL + Math.random().toString().replace('.', ''));
-        userRepository = new UserRepository(db);
+        userRepository = await Core.createUserRepository('test-collection', MONGO_URL);
     });
-
-    describe('save', () => {
-        it('insert', async () => {
-            const user = new User({
-                displayName: 'Angelo',
-                email: 'angeloocana@gmail.com',
-                userName: 'angeloocana'
-            });
-
-            await userRepository.save(user);
-            const userDb = await userRepository.getById(user.id);
-
-            ok(userDb);
-            equal(userDb.id, user.id);
-            equal(userDb.displayName, user.displayName);
-            equal(userDb.email, user.email);
-            equal(userDb.userName, user.userName);
-        });
-        it('update');
-    });
-
     describe('getOtherUsersWithSameUserNameOrEmail', () => {
         it('find by email', async () => {
-            const user = new User({
+            const user: IUserArgs = {
+                id: 'testid',
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'angeloocana'
-            });
+            };
 
-            const user2 = new User({
+            const user2: IUserArgs = {
+                id: 'testid2',
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'gsgdsgsd'
-            });
+            };
 
             await userRepository.save(user);
 
@@ -55,18 +37,19 @@ describe('UserRepository', () => {
         });
 
         it('find by userName', async () => {
-            const user = new User({
+            const user: IUserArgs = {
+                id: 'testid',
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'angeloocana'
-            });
+            };
 
-            const user2 = new User({
+            const user2: IUserArgs = {
+                id: 'testid2',
                 displayName: 'Angelo',
                 email: 'advadvdavad@gmail.com',
                 userName: 'angeloocana'
-            });
-
+            };
             await userRepository.save(user);
 
             const userDb = await userRepository.getOtherUsersWithSameUserNameOrEmail(user2);
@@ -76,11 +59,12 @@ describe('UserRepository', () => {
         });
 
         it('not found', async () => {
-            const user = new User({
+            const user: IUserArgs = {
+                id: 'testid',
                 displayName: 'Angelo',
                 email: 'dgh3t4hd@gmail.com',
                 userName: 'dgh3t4hd'
-            });
+            };
 
             const userDb = await userRepository.getOtherUsersWithSameUserNameOrEmail(user);
 
@@ -90,11 +74,12 @@ describe('UserRepository', () => {
 
     describe('getByUserNameOrEmail', () => {
         it('find by email', async () => {
-            const user = new User({
+            const user: IUserArgs = {
+                id: 'testid',
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'angeloocana'
-            });
+            };
 
             await userRepository.save(user);
             const userDb = await userRepository.getByUserNameOrEmail('angeloocana@gmail.com');
@@ -107,11 +92,12 @@ describe('UserRepository', () => {
         });
 
         it('find by userName', async () => {
-            const user = new User({
+            const user: IUserArgs = {
+                id: 'testid',
                 displayName: 'Angelo',
                 email: 'angeloocana@gmail.com',
                 userName: 'angeloocana'
-            });
+            };
 
             await userRepository.save(user);
             const userDb = await userRepository.getByUserNameOrEmail('angeloocana');

@@ -1,8 +1,9 @@
 import { ok } from 'ptz-assert';
-import { UserRepository } from './index';
+import * as Core from './index';
 
 describe('ptz-user-repository', () => {
     describe('exports', () => {
-        it('UserRepository', () => ok(UserRepository));
+        it('getByUserNameOrEmail', () => ok(Core.getByUserNameOrEmail));
+        it('getOtherUsersWithSameUserNameOrEmail', () => ok(Core.getOtherUsersWithSameUserNameOrEmail));
     });
 });
