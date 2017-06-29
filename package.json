@@ -1,6 +1,6 @@
 {
   "name": "@alanmarcell/ptz-user-repository",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Polutz User Repository.",
   "main": "dist/index.js",
   "typings": "src/index.ts",
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@alanmarcell/ptz-core-repository": "^0.0.1",
-    "@alanmarcell/ptz-user-domain": "^0.0.0",
+    "@alanmarcell/ptz-user-domain": "^0.0.4",
     "mongodb": "^2.2.29",
     "ptz-log": "^1.1.0"
   },

@@ -21,9 +21,9 @@
     mongodb "^2.2.29"
     ptz-log "^1.0.0"
 
-"@alanmarcell/ptz-user-domain@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-domain/-/ptz-user-domain-0.0.0.tgz#41193f3963118feca8aa5b49ff579cc2cff6ea8b"
+"@alanmarcell/ptz-user-domain@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-domain/-/ptz-user-domain-0.0.4.tgz#38255d1e47659365c2be1c464e7efd75ed26b792"
   dependencies:
     "@alanmarcell/ptz-core-domain" "^0.0.1"
     "@alanmarcell/ptz-validations" "^0.0.2"
