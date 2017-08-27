@@ -1,6 +1,6 @@
-import { find, getById, getByIds, getDb, getDbCollection, save } from '@alanmarcell/ptz-core-repository';
-import { IUser, IUserArgs } from '@alanmarcell/ptz-user-domain';
 import { Collection } from 'mongodb';
+import { find, getById, getByIds, getDb, getDbCollection, save } from 'ptz-core-repository';
+import { IUser, IUserArgs } from 'ptz-user-domain';
 import R from 'ramda';
 
 export const createUserRepository = R.curry(async (collectionName: string, url: string) => {

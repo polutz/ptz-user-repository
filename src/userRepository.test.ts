@@ -1,8 +1,5 @@
-// import { Collection, Db } from 'mongodb';
-// import { createRepository } from '@alanmarcell/ptz-core-repository';
-// import { IBaseRepository, IEntityMinBase } from 'ptz-core-domain';
-import { IUserArgs } from '@alanmarcell/ptz-user-domain';
 import { emptyArray, equal, notEqual, notOk, ok } from 'ptz-assert';
+import { IUserArgs } from 'ptz-user-domain';
 import * as Core from './index';
 
 const MONGO_URL = 'mongodb://localhost:27017/ptz-core-repo';

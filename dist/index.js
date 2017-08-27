@@ -10,7 +10,7 @@ Object.keys(_userRepository).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _userRepository[key];
     }
   });
