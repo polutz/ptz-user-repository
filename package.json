@@ -49,9 +49,9 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "ptz-core-repository": "^2.1.0",
-    "ptz-user-domain": "^2.1.1",
     "mongodb": "^2.2.31",
-    "ptz-log": "^1.1.0"
+    "ptz-core-repository": "^2.1.2",
+    "ptz-log": "^1.1.0",
+    "ptz-user-domain": "^2.1.1"
   }
 }
