@@ -87,7 +87,7 @@
 					<div class="tsd-signature tsd-kind-icon">create<wbr>User<wbr>Repository<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry(async (collectionName: string, url: string) &#x3D;&gt; {const db &#x3D; await getDb(url);const collection &#x3D; getDbCollection(db, collectionName);return {db,collectionName,save: save(collection),getByIds: getByIds(collection),find: find(collection),getById: getById(collection),getDbCollection,getOtherUsersWithSameUserNameOrEmail: getOtherUsersWithSameUserNameOrEmail(collection),getByUserNameOrEmail: getByUserNameOrEmail(collection)};})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/fb93762/src/userRepository.ts#L6">userRepository.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/aa585eb/src/userRepository.ts#L6">userRepository.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -97,7 +97,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>ByUser<wbr>Name<wbr>OrEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IUser</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((collection: Collection, userNameOrEmail: string): Promise&lt;IUser&gt; &#x3D;&gt; {const query &#x3D; {$or: [{ email: userNameOrEmail },{ userName: userNameOrEmail }]};return collection.findOne(query);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/fb93762/src/userRepository.ts#L41">userRepository.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/aa585eb/src/userRepository.ts#L41">userRepository.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -107,7 +107,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Other<wbr>Users<wbr>With<wbr>Same<wbr>User<wbr>Name<wbr>OrEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">IUserArgs</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IUser</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((collection: Collection, user: IUserArgs): Promise&lt;IUser[]&gt; &#x3D;&gt; {const query &#x3D; {_id: { $ne: user.id },$or: [{ email: user.email },{ userName: user.userName }]};const select &#x3D; {userName: 1,email: 1};return collection.find(query, select).toArray();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/fb93762/src/userRepository.ts#L22">userRepository.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-repository/blob/aa585eb/src/userRepository.ts#L22">userRepository.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
