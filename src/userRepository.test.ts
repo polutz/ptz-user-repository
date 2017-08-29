@@ -7,7 +7,7 @@ var userRepository;
 describe('UserRepository', () => {
 
     beforeEach(async () => {
-        userRepository = await Core.createUserRepository('test-collection', MONGO_URL);
+        userRepository = await Core.createUserRepository(MONGO_URL, 'test-collection');
     });
     describe('getOtherUsersWithSameUserNameOrEmail', () => {
         it('find by email', async () => {

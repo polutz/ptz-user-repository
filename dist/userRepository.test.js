@@ -14,7 +14,7 @@ const MONGO_URL = 'mongodb://localhost:27017/ptz-core-repo';
 var userRepository;
 describe('UserRepository', () => {
     beforeEach(_asyncToGenerator(function* () {
-        userRepository = yield Core.createUserRepository('test-collection', MONGO_URL);
+        userRepository = yield Core.createUserRepository(MONGO_URL, 'test-collection');
     }));
     describe('getOtherUsersWithSameUserNameOrEmail', () => {
         it('find by email', _asyncToGenerator(function* () {

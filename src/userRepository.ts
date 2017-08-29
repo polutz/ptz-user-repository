@@ -1,9 +1,11 @@
 import { Collection } from 'mongodb';
 import { find, getById, getByIds, getDb, getDbCollection, save } from 'ptz-core-repository';
-import { IUser, IUserArgs } from 'ptz-user-domain';
+import { IUser, IUserArgs, IUserRepository } from 'ptz-user-domain';
 import R from 'ramda';
 
-export const createUserRepository = R.curry(async (collectionName: string, url: string) => {
+type ICreateRepository = (url: string, collectionName: string) => Promise<IUserRepository>;
+
+export const createUserRepository: ICreateRepository = R.curry(async (url: string, collectionName: string) => {
     const db = await getDb(url);
     const collection = getDbCollection(db, collectionName);
     return {

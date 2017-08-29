@@ -1,6 +1,6 @@
 import { find, getById, getByIds, getDb, getDbCollection, save } from 'ptz-core-repository';
 import R from 'ramda';
-export const createUserRepository = R.curry(async (collectionName, url) => {
+export const createUserRepository = R.curry(async (url, collectionName) => {
     const db = await getDb(url);
     const collection = getDbCollection(db, collectionName);
     return {
