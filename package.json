@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "mongodb": "^2.2.31",
-    "ptz-core-repository": "^2.1.2",
+    "ptz-core-repository": "^2.1.3",
     "ptz-log": "^1.1.0",
     "ptz-user-domain": "^2.1.1"
   }
